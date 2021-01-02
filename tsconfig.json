@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "outDir": "lib",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": false
+    },
+    "exclude": [
+        "node_modules",
+        "lib"
+    ]
+}
