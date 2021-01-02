@@ -1,4 +1,4 @@
-class LogEntry {
-    username: string;
+export class LogEntry {
+    data: string;
     timeAdded: number;
 }
