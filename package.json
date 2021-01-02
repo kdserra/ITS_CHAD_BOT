@@ -1,0 +1,28 @@
+{
+  "name": "its-chad-bot",
+  "version": "1.0.0",
+  "description": "Twitch chat-bot made for the streamer ItsAmbitious.",
+  "main": "index.js",
+  "dependencies": {
+    "npm": "^6.14.10",
+    "tmi.js": "^1.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kdserra/ITS_CHAD_BOT.git"
+  },
+  "keywords": [
+    "twitch",
+    "chatbot"
+  ],
+  "author": "kdserra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kdserra/ITS_CHAD_BOT/issues"
+  },
+  "homepage": "https://github.com/kdserra/ITS_CHAD_BOT#readme"
+}
