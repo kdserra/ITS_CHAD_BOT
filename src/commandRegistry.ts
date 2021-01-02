@@ -1,5 +1,5 @@
 import tmi = require("tmi.js");
-import { ICommand } from "./commands/ICommand";
+import { ICommand } from "./commands/definitions/ICommand";
 import { invalid } from "./commands/invalid";
 export { registerCommand, resolveCommand, commandRegistry };
 

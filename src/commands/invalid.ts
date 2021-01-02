@@ -1,6 +1,6 @@
 import tmi = require('tmi.js');
 import { client } from '../client';
-import { ICommand } from "./ICommand";
+import { ICommand } from "./definitions/ICommand";
 import { Utils } from "../utils";
 
 // The invalid command is run when an invalid command is attempted.
