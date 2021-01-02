@@ -3,10 +3,12 @@ import { ICommand } from "./commands/ICommand";
 import { invalid } from "./commands/invalid";
 export { registerCommand, resolveCommand, commandRegistry };
 
-const invalidCmd: ICommand = new invalid();
 let commandRegistry: ICommand[] = [];
 
-registerCommand(new invalid());
+// Cache invalidCmd to return it when invalid commands are used.
+const invalidCmd: ICommand = new invalid();
+
+registerCommand(invalidCmd);
 
 function getCommandArgs(message: string): string[] {
     return message.split(/[ ,]+/)[0].split(/[!,]+/);
