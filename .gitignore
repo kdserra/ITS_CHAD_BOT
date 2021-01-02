@@ -105,3 +105,6 @@ dist
 
 # .replit run file
 .replit
+
+# .env enviorment tokens file
+.env
