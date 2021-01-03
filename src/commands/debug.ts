@@ -10,19 +10,24 @@ import { LogEntry } from '../definitions/LogEntry';
 export class debug implements ICommand {
     name: string = "debug";
     run(channel: string, tags: tmi.ChatUserstate, message: string, commandArgs: string[]): void {
-        if (tags.mod) {
-            if (commandArgs.length == 2)
-            {
-                switch (commandArgs[1]){
+        if (tags.mod || channel.slice(1, channel.length) == tags.username) {
+            if (commandArgs.length == 3) {
+                switch (commandArgs[2]) {
                     case "printlog":
                         Log.PrintLog();
+                        Utils.SendChatMessageToPerson(channel,tags['display-name'],"Log was printed, see output.");
+                        break;
+                    case "clear":
+                        for (let i = 0; i < 20; i++) { console.log(" "); }
+                        Utils.SendChatMessageToPerson(channel,tags['display-name'],"Output was cleared.");
                         break;
                     default:
-                        const msg:string = ("@" + tags['display-name'] + " -> The debug command you tried to use does not exist.");
-                        Utils.PrintTimestamped("Sent Message:" + msg);
-                        client.say(channel, msg);
+                        Utils.SendChatMessageToPerson(channel,tags['display-name'],"The debug command you tried to use does not exist.");
                         break;
                 }
+            }
+            else {
+                Utils.SendChatMessageToPerson(channel,tags['display-name'],"Incorrect usage: !debug <debug cmd>.");
             }
         }
     }
