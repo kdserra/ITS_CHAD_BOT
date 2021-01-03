@@ -10,17 +10,18 @@ import { LogEntry } from '../definitions/LogEntry';
 export class nuke implements ICommand {
     name: string = "nuke";
     run(channel: string, tags: tmi.ChatUserstate, message: string, commandArgs: string[]): void {
-        // check if user has permission to use command (AKA: moderator)
-        Utils.PrintTimestamped(tags.username + " used command: " + commandArgs[1]);
-        let minutes: number = parseInt(commandArgs[3]);
-        if (commandArgs.length == 4 && !isNaN(minutes)) {
-            if (minutes > 60) { minutes = 60; }
+        if (tags.mod) {
+            Utils.PrintTimestamped(tags.username + " used command: " + commandArgs[1]);
+            let minutes: number = parseInt(commandArgs[3]);
+            if (commandArgs.length == 4 && !isNaN(minutes)) {
+                if (minutes > 60) { minutes = 60; }
 
-            const matches: LogEntry[] = Log.FindDataInLog(commandArgs[2]);
-            for (let i = 0; i < matches.length; i++) {
-                if (matches[i].tags.username != tags.username) {
-                    Utils.PrintTimestamped(matches[i].tags.username + " said this!");
-                    client.say(channel, matches[i].tags['display-name'] + " said this!");
+                const matches: LogEntry[] = Log.FindDataInLog(commandArgs[2]);
+                for (let i = 0; i < matches.length; i++) {
+                    if (matches[i].tags.username != tags.username) {
+                        Utils.PrintTimestamped(matches[i].tags.username + " said this!");
+                        client.say(channel, matches[i].tags['display-name'] + " said this!");
+                    }
                 }
             }
         }

@@ -24,5 +24,3 @@ function onMessageHandler(channel: string, tags: tmi.ChatUserstate, message: str
     Log.AddToLog(logEntry);
     Utils.PrintTimestamped("Added log entry.");
 }
-
-setInterval(function(){ Log.RemoveOldEntries(); }, 60000);

@@ -1,3 +1,4 @@
+import { log } from "console";
 import { LogEntry } from "./definitions/LogEntry"
 import { Utils } from "./utils";
 export { Log }
@@ -7,8 +8,18 @@ class Log {
 
     public static AddToLog(logEntry: LogEntry): void {
         this.log.push(logEntry);
+        setInterval(function () { Log.RemoveFromLog(logEntry); }, 60000);
     }
 
+    public static RemoveFromLog(logEntry: LogEntry): boolean {
+        const index = this.log.indexOf(logEntry);
+        if (index > -1) {
+            this.log.splice(index, 1);
+            return true;
+        }
+        return false;
+    }
+/*
     public static RemoveOldEntries(): void {
         for (let i = 0; i < this.log.length; i++) {
             const time: Date = Utils.GetDateFromTime(this.log[i].timeAdded);
@@ -26,6 +37,7 @@ class Log {
             }
         }
     }
+*/
 
     public static FindDataInLog(data: string): LogEntry[] {
         let matches: LogEntry[] = [];
@@ -38,7 +50,7 @@ class Log {
     }
 
     public static PrintLog() {
-        if (this.log.length > 0){
+        if (this.log.length > 0) {
             Utils.PrintLineTimestamped();
         }
         for (let i = 0; i < this.log.length; i++) {
