@@ -11,7 +11,6 @@ export class nuke implements ICommand {
     name: string = "nuke";
     run(channel: string, tags: tmi.ChatUserstate, message: string, commandArgs: string[]): void {
         if (tags.mod) {
-            Utils.PrintTimestamped(tags.username + " used command: " + commandArgs[1]);
             let minutes: number = parseInt(commandArgs[3]);
             if (commandArgs.length == 4 && !isNaN(minutes)) {
                 if (minutes > 60) { minutes = 60; }
