@@ -11,7 +11,7 @@ class Utils {
         return date
     }
     public static GetElapsedMinutes(startDate: Date, endDate: Date): number {
-        return Math.abs(Math.round((startDate.getTime() - endDate.getTime()) / 60000));
+        return Math.floor((Math.abs(startDate.getTime() - endDate.getTime())/1000)/60);
     }
 
     public static SetCharAt(str:string,index:number,chr:string) {
@@ -21,5 +21,9 @@ class Utils {
 
     public static PrintTimestamped(message:string){
         console.log("[" + Utils.GetCurrentTime() + "] " + message);
+    }
+
+    public static PrintLineTimestamped(){
+        Utils.PrintTimestamped("-----------------------------");
     }
 }

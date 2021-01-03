@@ -15,8 +15,13 @@ class Log {
             let maxTime: Date = Utils.GetDateFromTime(this.log[i].timeAdded);
             maxTime.setHours(time.getHours() + 1);
 
-            if (Utils.GetElapsedMinutes(time, maxTime) > 60) {
-                console.log("[" + Utils.GetCurrentTime() + "] " + " removing old log: \nUsername:" + this.log[i].username + "\nData:" + this.log[i].data + "\nTime Added:" + this.log[i].timeAdded);
+            if (Utils.GetElapsedMinutes(time, maxTime) >= 60) {
+                Utils.PrintLineTimestamped();
+                Utils.PrintTimestamped("Removed old log:");
+                Utils.PrintTimestamped("Username: " + this.log[i].tags.username);
+                Utils.PrintTimestamped("Data: " + this.log[i].data);
+                Utils.PrintTimestamped("Time Added: " + this.log[i].timeAdded);
+                Utils.PrintLineTimestamped();
                 this.log.splice(i, 1);
             }
         }
@@ -33,13 +38,15 @@ class Log {
     }
 
     public static PrintLog() {
-        console.log("---------------------------");
+        if (this.log.length > 0){
+            Utils.PrintLineTimestamped();
+        }
         for (let i = 0; i < this.log.length; i++) {
-            console.log("[" + Utils.GetCurrentTime() + "] Entry Number: " + i);
-            console.log("[" + Utils.GetCurrentTime() + "] Username: " + this.log[i].username);
-            console.log("[" + Utils.GetCurrentTime() + "] Data: " + this.log[i].data);
-            console.log("[" + Utils.GetCurrentTime() + "] Time Added: " + this.log[i].timeAdded);
-            console.log("---------------------------");
+            Utils.PrintTimestamped("Entry Number: " + i);
+            Utils.PrintTimestamped("Username: " + this.log[i].tags.username);
+            Utils.PrintTimestamped("Data: " + this.log[i].data);
+            Utils.PrintTimestamped("Time Added: " + this.log[i].timeAdded);
+            Utils.PrintLineTimestamped();
         }
     }
 }
