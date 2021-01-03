@@ -25,7 +25,7 @@ class Log {
     public static FindDataInLog(data: string): LogEntry[] {
         let matches: LogEntry[] = [];
         for (let i = 0; i < this.log.length; i++) {
-            if (this.log[i].data.includes(data)) {
+            if (this.log[i].data.toLowerCase().includes(data)) {
                 matches.push(this.log[i]);
             }
         }
