@@ -8,6 +8,6 @@ import { Utils } from "../utils";
 export class invalid implements ICommand {
     name: string = "invalid";
     run(channel: string, tags: tmi.ChatUserstate, message: string, commandArgs: string[]): void {
-        console.log("[" + Utils.GetCurrentTime() + "] " + tags.username, "tried to use invalid command:", commandArgs[1]);
+        Utils.PrintTimestamped(tags.username + "tried to use invalid command:" + commandArgs[1]);
     }
 }

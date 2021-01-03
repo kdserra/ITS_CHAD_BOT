@@ -2,6 +2,7 @@ import tmi = require("tmi.js");
 import { ICommand } from "./commands/definitions/ICommand";
 import { invalid } from "./commands/invalid";
 import { nuke } from "./commands/nuke";
+import { Utils } from "./utils";
 export { registerCommand, resolveCommand, commandRegistry };
 
 let commandRegistry: ICommand[] = [];
@@ -13,7 +14,9 @@ registerCommand(invalidCmd);
 registerCommand(new nuke());
 
 function getCommandArgs(message: string): string[] {
-    return message.split(/[ ,]+/)[0].split(/[!,]+/);
+    let output: string[] = message.split(/[! ,]+/);
+    output[0] = "!";
+    return output;
 }
 
 function registerCommand(command: ICommand): boolean {

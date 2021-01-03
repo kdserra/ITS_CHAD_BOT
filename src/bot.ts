@@ -22,7 +22,7 @@ function onMessageHandler(channel: string, tags: tmi.ChatUserstate, message: str
 
     let logEntry = new LogEntry(tags.username, message, Utils.GetCurrentTime());
     Log.AddToLog(logEntry);
-    console.log("[" + Utils.GetCurrentTime() + "] Added log entry.");
-    Log.PrintLog();
+    Utils.PrintTimestamped("Added log entry.");
+    //Log.PrintLog();
 }
 
