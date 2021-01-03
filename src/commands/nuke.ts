@@ -18,9 +18,9 @@ export class nuke implements ICommand {
 
             const matches: LogEntry[] = Log.FindDataInLog(commandArgs[2]);
             for (let i = 0; i < matches.length; i++) {
-                if (matches[i].username != tags.username) {
-                    Utils.PrintTimestamped(matches[i].username + " said this!");
-                    client.say(channel, matches[i].username + " said this!");
+                if (matches[i].tags.username != tags.username) {
+                    Utils.PrintTimestamped(matches[i].tags.username + " said this!");
+                    client.say(channel, matches[i].tags['display-name'] + " said this!");
                 }
             }
         }
