@@ -20,6 +20,6 @@ class Utils {
     }
 
     public static PrintTimestamped(message:string){
-        console.log("[" + Utils.GetCurrentTime() + "]" + message);
+        console.log("[" + Utils.GetCurrentTime() + "] " + message);
     }
 }
