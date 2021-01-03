@@ -19,25 +19,6 @@ class Log {
         }
         return false;
     }
-/*
-    public static RemoveOldEntries(): void {
-        for (let i = 0; i < this.log.length; i++) {
-            const time: Date = Utils.GetDateFromTime(this.log[i].timeAdded);
-            let maxTime: Date = Utils.GetDateFromTime(this.log[i].timeAdded);
-            maxTime.setHours(time.getHours() + 1);
-
-            if (Utils.GetElapsedMinutes(time, maxTime) >= 60) {
-                Utils.PrintLineTimestamped();
-                Utils.PrintTimestamped("Removed old log:");
-                Utils.PrintTimestamped("Username: " + this.log[i].tags.username);
-                Utils.PrintTimestamped("Data: " + this.log[i].data);
-                Utils.PrintTimestamped("Time Added: " + this.log[i].timeAdded);
-                Utils.PrintLineTimestamped();
-                this.log.splice(i, 1);
-            }
-        }
-    }
-*/
 
     public static FindDataInLog(data: string): LogEntry[] {
         let matches: LogEntry[] = [];
