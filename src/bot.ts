@@ -7,7 +7,7 @@ import { LogEntry } from "./definitions/LogEntry";
 
 client.connect();
 client.on("connected", (server, port) => {
-    console.log("Connected to:", server + ":" + port);
+    Utils.PrintTimestamped("Connected to:" + server + ":" + port);
 })
 
 client.on("chat", (channel, tags, message, self) => {
@@ -20,9 +20,9 @@ function onMessageHandler(channel: string, tags: tmi.ChatUserstate, message: str
         resolveCommand(channel, tags, message);
     }
 
-    let logEntry = new LogEntry(tags.username, message, Utils.GetCurrentTime());
+    let logEntry = new LogEntry(tags, message, Utils.GetCurrentTime());
     Log.AddToLog(logEntry);
     Utils.PrintTimestamped("Added log entry.");
-    //Log.PrintLog();
 }
 
+setInterval(function(){ Log.RemoveOldEntries(); }, 60000);
