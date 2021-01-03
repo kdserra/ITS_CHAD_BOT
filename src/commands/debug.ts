@@ -10,7 +10,7 @@ import { LogEntry } from '../definitions/LogEntry';
 export class debug implements ICommand {
     name: string = "debug";
     run(channel: string, tags: tmi.ChatUserstate, message: string, commandArgs: string[]): void {
-        if (tags.mod || channel.slice(1, channel.length) == tags.username) {
+        if (tags.mod || channel.slice(1, channel.length) === tags.username) {
             if (commandArgs.length == 3) {
                 switch (commandArgs[2]) {
                     case "printlog":
