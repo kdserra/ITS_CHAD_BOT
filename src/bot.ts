@@ -1,6 +1,9 @@
 import tmi = require("tmi.js");
 import { client } from "./client";
 import { resolveCommand } from "./commandRegistry";
+import { Utils } from "./utils";
+import { Log } from "./log";
+import { LogEntry } from "./definitions/LogEntry";
 
 client.connect();
 client.on("connected", (server, port) => {
@@ -14,6 +17,12 @@ client.on("chat", (channel, tags, message, self) => {
 
 function onMessageHandler(channel: string, tags: tmi.ChatUserstate, message: string, self: boolean) {
     if (message.charAt(0) == "!" && message.length > 1) {
-        resolveCommand(channel, tags, message)
+        resolveCommand(channel, tags, message);
     }
+
+    let logEntry = new LogEntry(tags.username, message, Utils.GetCurrentTime());
+    Log.AddToLog(logEntry);
+    console.log("[" + Utils.GetCurrentTime() + "] Added log entry.");
+    Log.PrintLog();
 }
+
