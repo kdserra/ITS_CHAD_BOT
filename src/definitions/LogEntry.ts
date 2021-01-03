@@ -1,9 +1,11 @@
+import tmi = require('tmi.js');
+
 export class LogEntry {
-    username: string;
+    tags: tmi.ChatUserstate;
     data: string;
     timeAdded: string;
-    constructor(username: string, data: string, timeAdded: string) {
-        this.username = username;
+    constructor(tags: tmi.ChatUserstate, data: string, timeAdded: string) {
+        this.tags = tags;
         this.data = data;
         this.timeAdded = timeAdded;
     }
