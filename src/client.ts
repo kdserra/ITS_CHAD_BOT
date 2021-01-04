@@ -23,5 +23,4 @@ const options: tmi.Options = {
     channels: channels
 }
 
-
 export const client: tmi.Client = new (tmi.Client as any)(options);
