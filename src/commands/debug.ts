@@ -19,7 +19,7 @@ export class debug implements ICommand {
             if (commandArgs.length == 3) {
                 switch (commandArgs[2]) {
                     case "printlog":
-                        Log.PrintLog();
+                        Log.PrintLog(channel);
                         TMI_Utils.SendChatMessageToPerson(channel, TMI_Utils.GetDisplayNameFromTag(tags), "Log was printed, see output.");
                         break;
                     case "clear":

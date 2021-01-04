@@ -27,6 +27,6 @@ function onMessageHandler(channel: string, tags: tmi.ChatUserstate, message: str
         TMI_Utils.SendChatMessageToPerson(channel, Utils.ConvertToStrongString(tags.username), msg);
     }
 
-    let logEntry = new LogEntry(tags, message, Utils.GetCurrentTime());
+    let logEntry = new LogEntry(channel, tags, message, Utils.GetCurrentTime());
     Log.AddToLog(logEntry);
 }

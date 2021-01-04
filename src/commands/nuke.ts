@@ -18,7 +18,7 @@ export class nuke implements ICommand {
             let minutes: number = parseInt(commandArgs[3]);
             if (commandArgs.length == 4 && !isNaN(minutes) && minutes > 0) {
                 if (minutes > 60) { minutes = minutes = 60; }
-                const matches: LogEntry[] = Log.FindDataInLogWithinTime(commandArgs[2], minutes);
+                const matches: LogEntry[] = Log.FindDataInLogWithinTime(channel, commandArgs[2], minutes);
                 let numBanned:number = 0;
                 for (let i = 0; i < matches.length; i++) {
                     if (!this.hasPermission(channel_name, matches[i].tags)) {
