@@ -1,6 +1,7 @@
 import tmi = require("tmi.js");
 import { client } from "./client";
 import { resolveCommand } from "./commandRegistry";
+import { TMI_Utils } from "./tmi-utils";
 import { Utils } from "./utils";
 import { Log } from "./log";
 import { LogEntry } from "./definitions/LogEntry";
@@ -23,7 +24,7 @@ function onMessageHandler(channel: string, tags: tmi.ChatUserstate, message: str
     if (!Utils.isAsciiOnly(Utils.RemoveEmojis(message))) {
         const msg: string = "Please only use ASCII characters!";
         client.timeout(channel, Utils.ConvertToStrongString(tags.username), 5, msg);
-        Utils.SendChatMessageToPerson(channel, Utils.ConvertToStrongString(tags.username), msg);
+        TMI_Utils.SendChatMessageToPerson(channel, Utils.ConvertToStrongString(tags.username), msg);
     }
 
     let logEntry = new LogEntry(tags, message, Utils.GetCurrentTime());
