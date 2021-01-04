@@ -1,10 +1,16 @@
 {
     "compilerOptions": {
         "outDir": "lib",
+        "alwaysStrict": true,
         "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strict": true,
+        "strictBindCallApply": true,
+        "strictFunctionTypes": true,
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true,
         "removeComments": true,
         "preserveConstEnums": true,
-        "strict": true,
         "sourceMap": false
     },
     "exclude": [
