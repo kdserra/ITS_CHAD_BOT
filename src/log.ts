@@ -54,7 +54,7 @@ class Log {
         return matches;
     }
 
-    public static PrintLog() {
+    public static PrintLog(): void {
         Utils.PrintLineTimestamped();
         Utils.PrintTimestamped("Chat Log")
         Utils.PrintLineTimestamped();
