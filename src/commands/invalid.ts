@@ -7,6 +7,9 @@ import { Utils } from "../utils";
 // Usage in chat: "!invalid" or attempt to use an undefined command.
 export class invalid implements ICommand {
     name: string = "invalid";
+    hasPermission(channel: string, tags: tmi.ChatUserstate): boolean {
+        return true;
+    }
     run(channel: string, tags: tmi.ChatUserstate, message: string, commandArgs: string[]): void {
         Utils.PrintTimestamped(tags.username + " tried to use invalid command: " + commandArgs[1]);
     }

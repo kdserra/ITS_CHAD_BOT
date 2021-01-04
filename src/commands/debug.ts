@@ -9,9 +9,12 @@ import { LogEntry } from '../definitions/LogEntry';
 // Usage in chat: "!debug <debug cmd>"
 export class debug implements ICommand {
     name: string = "debug";
+    hasPermission(channel: string, tags: tmi.ChatUserstate): boolean {
+        return Utils.IsStreamerOrMod(channel, tags);
+    }
     run(channel: string, tags: tmi.ChatUserstate, message: string, commandArgs: string[]): void {
         const channel_name = channel.slice(1, channel.length);
-        if (Utils.IsStreamerOrMod(channel_name, tags)) {
+        if (this.hasPermission(channel_name, tags)) {
             if (commandArgs.length == 3) {
                 switch (commandArgs[2]) {
                     case "printlog":
