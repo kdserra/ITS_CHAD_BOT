@@ -1,2 +1,2 @@
 Todo:
-    * Change checks to rely on these helper functions.
+    * Rely on hasPermission for commands
