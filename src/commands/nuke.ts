@@ -1,7 +1,7 @@
 import tmi = require('tmi.js');
 import { client } from '../client';
 import { ICommand } from "./definitions/ICommand";
-import { Utils } from "../utils";
+import { TMI_Utils } from "../tmi-utils";
 import { Log } from "../log";
 import { LogEntry } from '../definitions/LogEntry';
 
@@ -10,7 +10,7 @@ import { LogEntry } from '../definitions/LogEntry';
 export class nuke implements ICommand {
     name: string = "nuke";
     hasPermission(channel: string, tags: tmi.ChatUserstate): boolean {
-        return Utils.IsStreamerOrMod(channel, tags);
+        return TMI_Utils.IsStreamerOrMod(channel, tags);
     }
     run(channel: string, tags: tmi.ChatUserstate, message: string, commandArgs: string[]): void {
         const channel_name: string = channel.slice(1, channel.length);
@@ -21,7 +21,7 @@ export class nuke implements ICommand {
                 const matches: LogEntry[] = Log.FindDataInLogWithinTime(commandArgs[2], minutes);
                 for (let i = 0; i < matches.length; i++) {
                     if (!this.hasPermission(channel_name, matches[i].tags)) {
-                        client.ban(channel, Utils.GetDisplayNameFromTag(matches[i].tags), "Banned from the nuke command.");
+                        client.ban(channel, TMI_Utils.GetDisplayNameFromTag(matches[i].tags), "Banned from the nuke command.");
                     }
                 }
             }
