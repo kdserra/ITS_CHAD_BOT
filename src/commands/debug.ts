@@ -18,7 +18,7 @@ export class debug implements ICommand {
                         Utils.SendChatMessageToPerson(channel,tags['display-name'],"Log was printed, see output.");
                         break;
                     case "clear":
-                        for (let i = 0; i < 20; i++) { console.log(" "); }
+                        for (let i = 0; i < 20; i++) { Utils.PrintEmpty(); }
                         Utils.SendChatMessageToPerson(channel,tags['display-name'],"Output was cleared.");
                         break;
                     default:
