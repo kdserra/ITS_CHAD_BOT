@@ -35,16 +35,8 @@ class Log {
     public static FindDataInLogWithinTime(data: string, minutes: number): LogEntry[] {
         let matches: LogEntry[] = [];
         for (let i = 0; i < this.log.length; i++) {
-
             let startTime: Date = Utils.GetDateFromTime(this.log[i].timeAdded);
             let endTime: Date = new Date();
-
-            Utils.PrintLineTimestamped();
-            Utils.PrintTimestamped("Start Time:" + startTime.toString());
-            Utils.PrintTimestamped("End Time:" + endTime.toString());
-            Utils.PrintTimestamped("Elapsed Minutes:" + Utils.GetElapsedMinutes(startTime, endTime).toString());
-            Utils.PrintLineTimestamped();
-
             if (Utils.GetElapsedMinutes(startTime, endTime) <= minutes) {
                 if (this.log[i].data.toLowerCase().includes(data)) {
                     matches.push(this.log[i]);
