@@ -14,12 +14,6 @@ class Log {
     }
 
     public static RemoveFromLog(logEntry: LogEntry): boolean {
-        Utils.PrintLineTimestamped();
-        Utils.PrintTimestamped("Removed log:");
-        Utils.PrintTimestamped("Username: " + logEntry.tags.username);
-        Utils.PrintTimestamped("Data: " + logEntry.data);
-        Utils.PrintTimestamped("Time Added: " + logEntry.timeAdded);
-        Utils.PrintLineTimestamped();
         const index = this.log.indexOf(logEntry);
         if (index > -1) {
             this.log.splice(index, 1);
@@ -44,7 +38,12 @@ class Log {
 
             let startTime: Date = Utils.GetDateFromTime(this.log[i].timeAdded);
             let endTime: Date = new Date();
-            endTime.setMinutes(endTime.getMinutes() - minutes);
+
+            Utils.PrintLineTimestamped();
+            Utils.PrintTimestamped("Start Time:" + startTime.toString());
+            Utils.PrintTimestamped("End Time:" + endTime.toString());
+            Utils.PrintTimestamped("Elapsed Minutes:" + Utils.GetElapsedMinutes(startTime, endTime).toString());
+            Utils.PrintLineTimestamped();
 
             if (Utils.GetElapsedMinutes(startTime, endTime) <= minutes) {
                 if (this.log[i].data.toLowerCase().includes(data)) {
