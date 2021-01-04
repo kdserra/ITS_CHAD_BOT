@@ -19,19 +19,19 @@ export class debug implements ICommand {
                 switch (commandArgs[2]) {
                     case "printlog":
                         Log.PrintLog();
-                        Utils.SendChatMessageToPerson(channel, tags['display-name'], "Log was printed, see output.");
+                        Utils.SendChatMessageToPerson(channel, Utils.GetDisplayNameFromTag(tags), "Log was printed, see output.");
                         break;
                     case "clear":
                         for (let i = 0; i < 100; i++) { Utils.PrintEmpty(); }
-                        Utils.SendChatMessageToPerson(channel, tags['display-name'], "Output was cleared.");
+                        Utils.SendChatMessageToPerson(channel, Utils.GetDisplayNameFromTag(tags), "Output was cleared.");
                         break;
                     default:
-                        Utils.SendChatMessageToPerson(channel, tags['display-name'], "The debug command you tried to use does not exist.");
+                        Utils.SendChatMessageToPerson(channel, Utils.GetDisplayNameFromTag(tags), "The debug command you tried to use does not exist.");
                         break;
                 }
             }
             else {
-                Utils.SendChatMessageToPerson(channel, tags['display-name'], "Incorrect usage: !debug <debug cmd>.");
+                Utils.SendChatMessageToPerson(channel, Utils.GetDisplayNameFromTag(tags), "Incorrect usage: !debug <debug cmd>.");
             }
         }
     }

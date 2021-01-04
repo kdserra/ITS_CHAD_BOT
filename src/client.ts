@@ -1,11 +1,11 @@
 import * as dotenv from 'dotenv';
 import tmi = require('tmi.js');
-
+import { Utils } from "./utils";
 dotenv.config();
 
-export const channels: string[] = process.env.channels.split(" ");
-export const bot_username: string = process.env.bot_username;
-const bot_oauth_token: string = process.env.bot_oauth_token;
+export const channels: string[] = Utils.ConvertToStrongString(process.env.channels).split(" ");
+export const bot_username: string = Utils.ConvertToStrongString(process.env.bot_username);
+const bot_oauth_token: string = Utils.ConvertToStrongString(process.env.bot_oauth_token);
 
 const options: tmi.Options = {
     options: { debug: true },

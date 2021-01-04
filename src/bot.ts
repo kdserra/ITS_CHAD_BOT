@@ -22,8 +22,8 @@ function onMessageHandler(channel: string, tags: tmi.ChatUserstate, message: str
 
     if (!Utils.isAsciiOnly(Utils.RemoveEmojis(message))) {
         const msg: string = "Please only use ASCII characters!";
-        client.timeout(channel, tags.username, 5, msg);
-        Utils.SendChatMessageToPerson(channel, tags.username, msg);
+        client.timeout(channel, Utils.ConvertToStrongString(tags.username), 5, msg);
+        Utils.SendChatMessageToPerson(channel, Utils.ConvertToStrongString(tags.username), msg);
     }
 
     let logEntry = new LogEntry(tags, message, Utils.GetCurrentTime());

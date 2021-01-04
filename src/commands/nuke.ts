@@ -21,7 +21,7 @@ export class nuke implements ICommand {
                 const matches: LogEntry[] = Log.FindDataInLogWithinTime(commandArgs[2], minutes);
                 for (let i = 0; i < matches.length; i++) {
                     if (!this.hasPermission(channel_name, matches[i].tags)) {
-                        client.ban(channel, matches[i].tags['display-name'], "Banned from the nuke command.");
+                        client.ban(channel, Utils.GetDisplayNameFromTag(matches[i].tags), "Banned from the nuke command.");
                     }
                 }
             }

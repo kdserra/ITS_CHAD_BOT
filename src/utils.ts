@@ -3,13 +3,21 @@ import { client } from "./client";
 export { Utils }
 
 class Utils {
-    public static IsStreamer(channel:string, tags:tmi.ChatUserstate): boolean
-    {
+    public static IsMod(tags: tmi.ChatUserstate): boolean {
+        if (tags.mod === undefined || tags.mod === false) { return false; }
+        else { return true; }
+    }
+
+    public static IsStreamer(channel: string, tags: tmi.ChatUserstate): boolean {
         return channel === tags.username;
     }
-    public static IsStreamerOrMod(channel:string, tags:tmi.ChatUserstate): boolean
-    {
-        return Utils.IsStreamer(channel,tags) || tags.mod;
+    public static IsStreamerOrMod(channel: string, tags: tmi.ChatUserstate): boolean {
+        return Utils.IsStreamer(channel, tags) || Utils.IsMod(tags);
+    }
+
+    public static GetDisplayNameFromTag(tags: tmi.ChatUserstate): string {
+        if (tags["display-name"] === undefined) { return ""; }
+        else { return tags["display-name"]; }
     }
 
     public static SendChatMessage(channel: string, msg: string): void {
@@ -61,5 +69,10 @@ class Utils {
     public static RemoveEmojis(str: string): string {
         var regex = /[^\p{L}\p{N}\p{P}\p{Z}]/gu;
         return str.replace(regex, '');
+    }
+
+    public static ConvertToStrongString(weak_str: string | undefined): string {
+        if (weak_str === undefined) { return ""; }
+        else { return weak_str; }
     }
 }

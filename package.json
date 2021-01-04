@@ -5,19 +5,21 @@
   "main": "index.js",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "npm": "^6.14.10",
-    "tmi.js": "^1.7.1",
-    "typescript": "^4.1.3"
+    "npm": "^6.14.10"
   },
   "devDependencies": {
     "@types/node": "^14.14.19",
-    "@types/tmi.js": "^1.4.3"
+    "@types/tmi.js": "^1.4.3",
+    "tmi.js": "^1.7.1",
+    "typescript": "^4.1.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "tsc",
-    "dev": "npm run compile && node ./lib/bot.js ./lib/client.js",
-    "bot": "node ./lib/bot.js ./lib/client.js"
+    "compile": "./node_modules/.bin/tsc.cmd",
+    "bot": "node ./lib/bot.js ./lib/client.js",
+    "dev": "npm run compile && npm run bot",
+    "dev-host": "npm run compile && node ./lib/server.js && npm run bot",
+    "host": "node ./lib/server.js && npm run bot"
   },
   "repository": {
     "type": "git",
