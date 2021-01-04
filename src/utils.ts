@@ -3,6 +3,15 @@ import { client } from "./client";
 export { Utils }
 
 class Utils {
+    public static IsStreamer(channel:string, tags:tmi.ChatUserstate): boolean
+    {
+        return channel === tags.user;
+    }
+    public static IsStreamerOrMod(channel:string, tags:tmi.ChatUserstate): boolean
+    {
+        return Utils.IsStreamer(channel,tags) || tags.mod;
+    }
+
     public static SendChatMessage(channel: string, msg: string): void {
         client.say(channel, msg);
         Utils.PrintTimestamped("Sent Message: " + msg);
