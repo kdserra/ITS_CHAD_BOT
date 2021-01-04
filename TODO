@@ -1,2 +1,3 @@
 Todo:
     * Update to make log system channel specific.
+    * Nuke command should type in chat "@User -> Removed <number> messages!"
