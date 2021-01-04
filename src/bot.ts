@@ -15,7 +15,7 @@ client.on("chat", (channel, tags, message, self) => {
     onMessageHandler(channel, tags, message, self);
 })
 
-function onMessageHandler(channel: string, tags: tmi.ChatUserstate, message: string, self: boolean) {
+function onMessageHandler(channel: string, tags: tmi.ChatUserstate, message: string, self: boolean): void {
     if (message.charAt(0) == "!" && message.length > 1) {
         resolveCommand(channel, tags, message);
     }
