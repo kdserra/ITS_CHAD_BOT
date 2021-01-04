@@ -20,7 +20,12 @@ function onMessageHandler(channel: string, tags: tmi.ChatUserstate, message: str
         resolveCommand(channel, tags, message);
     }
 
+    if (!Utils.isAsciiOnly(Utils.RemoveEmojis(message))) {
+        const msg: string = "Please only use ASCII characters!";
+        client.timeout(channel, tags.username, 5, msg);
+        Utils.SendChatMessageToPerson(channel, tags.username, msg);
+    }
+
     let logEntry = new LogEntry(tags, message, Utils.GetCurrentTime());
     Log.AddToLog(logEntry);
-    Utils.PrintTimestamped("Added log entry.");
 }
