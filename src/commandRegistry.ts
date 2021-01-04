@@ -3,7 +3,6 @@ import { ICommand } from "./commands/definitions/ICommand";
 import { invalid } from "./commands/invalid";
 import { nuke } from "./commands/nuke";
 import { debug } from "./commands/debug";
-import { Utils } from "./utils";
 export { registerCommand, resolveCommand, commandRegistry };
 
 let commandRegistry: ICommand[] = [];
