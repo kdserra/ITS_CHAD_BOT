@@ -48,7 +48,7 @@ class Utils {
     }
 
     public static PrintEmpty(): void {
-        Utils.PrintTimestamped(" ");
+        console.log(" ");
     }
 
     public static isAsciiOnly(str: string): boolean {
