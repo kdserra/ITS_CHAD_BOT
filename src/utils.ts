@@ -5,7 +5,7 @@ export { Utils }
 class Utils {
     public static IsStreamer(channel:string, tags:tmi.ChatUserstate): boolean
     {
-        return channel === tags.user;
+        return channel === tags.username;
     }
     public static IsStreamerOrMod(channel:string, tags:tmi.ChatUserstate): boolean
     {
