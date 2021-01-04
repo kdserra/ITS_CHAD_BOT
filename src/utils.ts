@@ -3,12 +3,12 @@ import { client } from "./client";
 export { Utils }
 
 class Utils {
-    public static SendChatMessage(channel: string, msg: string) {
+    public static SendChatMessage(channel: string, msg: string): void {
         client.say(channel, msg);
         Utils.PrintTimestamped("Sent Message: " + msg);
     }
 
-    public static SendChatMessageToPerson(channel: string, person: string, msg: string) {
+    public static SendChatMessageToPerson(channel: string, person: string, msg: string): void {
         Utils.SendChatMessage(channel, "@" + person + " -> " + msg);
     }
 
