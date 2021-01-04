@@ -3,18 +3,12 @@ import { client } from "./client";
 export { Utils }
 
 class Utils {
-    /*
-    const msg: string = ("@" + tags['display-name'] + " -> Output was cleared.");
-    Utils.PrintTimestamped("Sent Message: " + msg);
-    client.say(channel, msg);
-    */
-
-    public static SendChatMessage(channel:string, msg:string) {
+    public static SendChatMessage(channel: string, msg: string) {
         client.say(channel, msg);
         Utils.PrintTimestamped("Sent Message: " + msg);
     }
 
-    public static SendChatMessageToPerson(channel:string, person: string, msg: string) {
+    public static SendChatMessageToPerson(channel: string, person: string, msg: string) {
         Utils.SendChatMessage(channel, "@" + person + " -> " + msg);
     }
 
@@ -31,16 +25,32 @@ class Utils {
         return Math.floor((Math.abs(startDate.getTime() - endDate.getTime()) / 1000) / 60);
     }
 
-    public static SetCharAt(str: string, index: number, chr: string) {
+    public static SetCharAt(str: string, index: number, chr: string): string {
         if (index > str.length - 1) return str;
         return str.substring(0, index) + chr + str.substring(index + 1);
     }
 
-    public static PrintTimestamped(message: string) {
+    public static PrintTimestamped(message: string): void {
         console.log("[" + Utils.GetCurrentTime() + "] " + message);
     }
 
-    public static PrintLineTimestamped() {
+    public static PrintLineTimestamped(): void {
         Utils.PrintTimestamped("-----------------------------");
+    }
+
+    public static PrintEmpty(): void {
+        Utils.PrintTimestamped(" ");
+    }
+
+    public static isAsciiOnly(str: string): boolean {
+        for (var i = 0; i < str.length; i++)
+            if (str.charCodeAt(i) > 127)
+                return false;
+        return true;
+    }
+
+    public static RemoveEmojis(str: string): string {
+        var regex = /[^\p{L}\p{N}\p{P}\p{Z}]/gu;
+        return str.replace(regex, '');
     }
 }
