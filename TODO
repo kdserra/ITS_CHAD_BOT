@@ -1,0 +1,3 @@
+Todo:
+    * Create helper function in Utils IsStreamer(channel, tags), and IsStreamerOrMod(channel, tags)
+    * Change checks to rely on these helper functions.
