@@ -16,7 +16,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "tsc",
-    "dev": "npm run compile && node ./lib/bot.js ./lib/client.js"
+    "dev": "npm run compile && node ./lib/bot.js ./lib/client.js",
+    "bot": "node ./lib/bot.js ./lib/client.js"
   },
   "repository": {
     "type": "git",
