@@ -43,6 +43,22 @@ class Utils {
         return str.replace(regex, '');
     }
 
+    public static RemoveUnicodeSymbol(str: string): string {
+        const symbol_set: string = "’";
+        let output: string = str;
+        for (let i: number = 0; i < str.length; i++) {
+            output = output.replace(symbol_set.charAt(i), '');
+        }
+        return output;
+    }
+
+    public static RemoveSpecials(str: string): string {
+        let output = Utils.RemoveEmojis(str);
+        output = Utils.RemoveUnicodeSymbol(output);
+        return output;
+    }
+
+
     public static ConvertToStrongString(weak_str: string | undefined): string {
         if (weak_str === undefined) { return ""; }
         else { return weak_str; }
