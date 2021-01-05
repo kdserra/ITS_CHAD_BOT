@@ -1,5 +1,0 @@
-Todo:
-    * Allow messages to be configured in config file
-    * Allow configurable character whitelist
-    * Custom filter configurable from file
-    * Message Handler should be in it's own file
