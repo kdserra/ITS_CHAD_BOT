@@ -1,1 +1,3 @@
 Todo:
+    * Log system should read/write to disk
+    * Allow messages to be configured in config file
