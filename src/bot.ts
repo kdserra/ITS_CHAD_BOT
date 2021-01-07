@@ -20,7 +20,7 @@ function onMessageHandler(channel: string, tags: tmi.ChatUserstate, message: str
     if (message.charAt(0) == "!" && message.length > 1) {
         resolveCommand(channel, tags, message);
     }
-
+    
     if (!Utils.isAsciiOnly(Utils.RemoveSpecials(message))) {
         const msg: string = "Please only use ASCII characters!";
         client.timeout(channel, Utils.ConvertToStrongString(tags.username), 5, msg);
