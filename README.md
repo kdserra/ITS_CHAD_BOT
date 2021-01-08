@@ -19,7 +19,7 @@ Requires: [Node JS](https://nodejs.org/en/)
 
 1. Open a terminal in the bot's path.
 2. Run the following command: ```npm install```
-3. Modify the ```.env``` to use your bot's credentials.
+3. [Create ```.env``` in your bot's path.](#config)
 4. [Configure](#config) the bot.
 4. Run using the desired Run Command(s):
 
@@ -38,6 +38,18 @@ Requires: [Node JS](https://nodejs.org/en/)
 ```config/blacklisted_phrases.txt``` - Line separated phrases to blacklist.
 
 ```config/whitelisted_symbols.txt``` - No separator needed, symbols to whitelist.
+
+# <a name=".env"></a>Creating the Enviorment File
+
+```
+bot_username = "my_bot_username"
+bot_oauth_token = "oauth_token_no_prefix"
+channels = "channel1 channel2 channel3"
+```
+
+The OAuth Token **does not** need the ```oauth:``` prefix.
+
+The channels list should be space separated.
 
 # License
 **ITS_CHAD_BOT** is licensed under the MIT License.
