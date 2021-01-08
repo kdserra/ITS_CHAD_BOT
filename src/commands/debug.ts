@@ -26,6 +26,10 @@ export class debug implements ICommand {
                         for (let i = 0; i < 100; i++) { Utils.PrintEmpty(); }
                         TMI_Utils.SendChatMessageToPerson(channel, TMI_Utils.GetDisplayNameFromTag(tags), "Output was cleared.");
                         break;
+                    case "printconfig":
+                        Utils.PrintConfig();
+                        TMI_Utils.SendChatMessageToPerson(channel, TMI_Utils.GetDisplayNameFromTag(tags), "Config was printed, see output.");
+                        break;
                     default:
                         TMI_Utils.SendChatMessageToPerson(channel, TMI_Utils.GetDisplayNameFromTag(tags), "The debug command you tried to use does not exist.");
                         break;
