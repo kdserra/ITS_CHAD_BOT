@@ -29,12 +29,11 @@ function onMessageHandler(channel: string, tags: tmi.ChatUserstate, message: str
             client.timeout(channel, Utils.ConvertToStrongString(tags.username), 5, msg);
             TMI_Utils.SendChatMessageToPerson(channel, Utils.ConvertToStrongString(tags.username), msg);
         }
-        if (Utils.ContainsBlacklistedPhrase(message)){
+        if (Utils.ContainsBlacklistedPhrase(Utils.ConvertToASCII(message))){
             client.ban(channel, Utils.ConvertToStrongString(tags.username), "Banned for blacklisted spam.");
         }
     }
-
-
+    
     let logEntry = new LogEntry(channel, tags, message, Utils.GetCurrentTime());
     Log.AddToLog(logEntry);
 }
