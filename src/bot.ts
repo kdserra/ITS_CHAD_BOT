@@ -23,7 +23,7 @@ function onMessageHandler(channel: string, tags: tmi.ChatUserstate, message: str
     }
     
     if (!TMI_Utils.IsStreamerOrMod(channel,tags)) {
-        if (!Utils.isAsciiOnly(Utils.RemoveSpecials(message)) && config.GetConfigOptions().IsUsingSymbolFilter())
+        if (!Utils.isAsciiOnly(Utils.RemoveSpecials(message)) && config.GetConfigOptions().using_symbol_filter)
         {
             const msg: string = "Please only use ASCII characters!";
             client.timeout(channel, Utils.ConvertToStrongString(tags.username), 5, msg);
