@@ -51,7 +51,7 @@ class Utils {
         const symbol_set: string[] = config.GetWhitelistedSymbols();
         let output: string = str;
         for (let i: number = 0; i < symbol_set.length; i++) {
-            output = Utils.ReplaceAll(str,symbol_set[i],"");
+            output = Utils.ReplaceAll(str, symbol_set[i], "");
         }
         return output;
     }
@@ -69,6 +69,10 @@ class Utils {
             }
         }
         return false;
+    }
+
+    public static ConvertToASCII(str: string): string {
+        return str.replace(/[^\x00-\x7F]/g, "");;
     }
 
     public static ConvertToStrongString(weak_str: string | undefined): string {
