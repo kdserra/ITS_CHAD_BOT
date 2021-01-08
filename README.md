@@ -7,7 +7,7 @@ Twitch chat-bot written in Typescript.
 |------------------------|-------------------------------------------------------------------------|----------------------|
 | !debug printlog        | Print the chat-log.                                                     | Streamer or Mod      |
 | !debug clear           | Clear the chat-log.                                                     | Streamer or Mod      |
-| !nuke <word> <minutes> | Ban users who used a specified word in the specified number of minutes. | Streamer or Mod      |
+| !nuke \<word> \<minutes> | Ban users who used a specified word in the specified number of minutes. | Streamer or Mod      |
 
 # Disclaimer
 
