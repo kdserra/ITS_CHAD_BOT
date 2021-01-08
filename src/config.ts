@@ -3,9 +3,15 @@ import { ConfigOptions } from './definitions/ConfigOptions';
 import { Config } from './definitions/Config';
 
 function getConfigOptions(): ConfigOptions {
-    const path:string = 'config/config.json';
-    if (!fs.existsSync(path)) { fs.writeFileSync(path,JSON.stringify(new ConfigOptions(true))) };
-    return JSON.parse(fs.readFileSync(path, 'utf8'));
+    const path: string = 'config/config.json';
+    try {
+        if (!fs.existsSync(path)) { fs.writeFileSync(path, JSON.stringify(new ConfigOptions(true))) };
+        return JSON.parse(fs.readFileSync(path, 'utf8'));
+    }
+    catch{
+        fs.writeFileSync(path, JSON.stringify(new ConfigOptions(true)));
+        return JSON.parse(fs.readFileSync(path, 'utf8'));
+    }
 }
 
 function getBlacklistedPhrasesFromConfig(): string[] {
