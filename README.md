@@ -17,7 +17,7 @@ This bot only stores the last hour of chat-logs.
 Requires: [Node JS](https://nodejs.org/en/)
 
 1. Open a terminal in the bot's path.
-2. Run the following path: ```npm install```
+2. Run the following command: ```npm install```
 3. Run using the desired Run Command(s):
 
 # Run Commands
