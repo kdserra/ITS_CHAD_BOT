@@ -39,7 +39,7 @@ Requires: [Node JS](https://nodejs.org/en/)
 
 ```config/whitelisted_symbols.txt``` - No separator needed, symbols to whitelist.
 
-# <a name=".env"></a>Creating the Enviorment File
+# <a name=".env"></a>Creating the Environment File
 
 ```
 bot_username = "my_bot_username"
