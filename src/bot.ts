@@ -21,11 +21,18 @@ function onMessageHandler(channel: string, tags: tmi.ChatUserstate, message: str
         resolveCommand(channel, tags, message);
     }
     
-    if (!TMI_Utils.IsStreamerOrMod(channel,tags) && !Utils.isAsciiOnly(Utils.RemoveSpecials(message))) {
-        const msg: string = "Please only use ASCII characters!";
-        client.timeout(channel, Utils.ConvertToStrongString(tags.username), 5, msg);
-        TMI_Utils.SendChatMessageToPerson(channel, Utils.ConvertToStrongString(tags.username), msg);
+    if (!TMI_Utils.IsStreamerOrMod(channel,tags)) {
+        if (!Utils.isAsciiOnly(Utils.RemoveSpecials(message)))
+        {
+            const msg: string = "Please only use ASCII characters!";
+            client.timeout(channel, Utils.ConvertToStrongString(tags.username), 5, msg);
+            TMI_Utils.SendChatMessageToPerson(channel, Utils.ConvertToStrongString(tags.username), msg);
+        }
+        if (Utils.ContainsBlacklistedPhrase(message)){
+            client.ban(channel, Utils.ConvertToStrongString(tags.username), "Banned for blacklisted spam.");
+        }
     }
+
 
     let logEntry = new LogEntry(channel, tags, message, Utils.GetCurrentTime());
     Log.AddToLog(logEntry);
