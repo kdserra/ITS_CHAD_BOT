@@ -8,7 +8,7 @@ function getConfigOptions(): ConfigOptions {
         if (!fs.existsSync(path)) { fs.writeFileSync(path, JSON.stringify(new ConfigOptions(true))) };
         return JSON.parse(fs.readFileSync(path, 'utf8'));
     }
-    catch{
+    catch {
         fs.writeFileSync(path, JSON.stringify(new ConfigOptions(true)));
         return JSON.parse(fs.readFileSync(path, 'utf8'));
     }
