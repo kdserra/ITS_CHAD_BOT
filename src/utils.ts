@@ -58,9 +58,7 @@ class Utils {
 
     public static RemoveSpecials(str: string): string {
         let output = Utils.RemoveEmojis(str);
-        console.log("Removed Emojis: " + output);
         output = Utils.RemoveUnicodeSymbol(output);
-        console.log("Removed Unicode Symbols: " + output);
         return output;
     }
 

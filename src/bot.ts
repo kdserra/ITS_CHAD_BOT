@@ -5,6 +5,7 @@ import { TMI_Utils } from "./tmi-utils";
 import { Utils } from "./utils";
 import { Log } from "./log";
 import { LogEntry } from "./definitions/LogEntry";
+import { config } from "./config";
 
 client.connect();
 client.on("connected", (server, port) => {
@@ -22,7 +23,7 @@ function onMessageHandler(channel: string, tags: tmi.ChatUserstate, message: str
     }
     
     if (!TMI_Utils.IsStreamerOrMod(channel,tags)) {
-        if (!Utils.isAsciiOnly(Utils.RemoveSpecials(message)))
+        if (!Utils.isAsciiOnly(Utils.RemoveSpecials(message)) && config.GetConfigOptions().IsUsingSymbolFilter())
         {
             const msg: string = "Please only use ASCII characters!";
             client.timeout(channel, Utils.ConvertToStrongString(tags.username), 5, msg);
