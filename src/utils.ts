@@ -80,7 +80,7 @@ class Utils {
         else { return weak_str; }
     }
 
-    public static PrintConfig() {
+    public static PrintConfig(): void {
         console.log("Blacklisted Phrases:" + config.GetBlacklistedPhrases());
         console.log("Whitelisted Symbols:" + config.GetWhitelistedSymbols());
     }
