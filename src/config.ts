@@ -28,6 +28,20 @@ function getBlacklistedPhrasesFromConfig(): string[] {
     return output;
 }
 
+function getBotListFromConfig(): string[] {
+    let output: string[] = [];
+    try {
+        const data = fs.readFileSync('config/twitch_bots.txt', 'utf-8');
+        const lines: string[] = data.split(/\r?\n/);
+        for (let i: number = 0; i < lines.length; i++) {
+            output.push(lines[i]);
+        }
+    } catch (err) {
+        console.error(err);
+    }
+    return output;
+}
+
 function getWhitelistedSymbolsFromConfig(): string[] {
     let output: string[] = [];
     try {
@@ -41,5 +55,5 @@ function getWhitelistedSymbolsFromConfig(): string[] {
     return output;
 }
 
-let config = new Config(getConfigOptions(), getBlacklistedPhrasesFromConfig(), getWhitelistedSymbolsFromConfig())
+let config = new Config(getConfigOptions(), getBlacklistedPhrasesFromConfig(), getWhitelistedSymbolsFromConfig(), getBotListFromConfig())
 export { config };
