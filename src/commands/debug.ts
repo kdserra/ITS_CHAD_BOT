@@ -5,6 +5,7 @@ import { TMI_Utils } from "../tmi-utils";
 import { Utils } from "../utils";
 import { Log } from "../log";
 import { LogEntry } from '../definitions/LogEntry';
+import { config } from '../config';
 
 // The debug command provides debugging features.
 // Usage in chat: "!debug <debug cmd>"
@@ -29,6 +30,20 @@ export class debug implements ICommand {
                     case "printconfig":
                         Utils.PrintConfig();
                         TMI_Utils.SendChatMessageToPerson(channel, TMI_Utils.GetDisplayNameFromTag(tags), "Config was printed, see output.");
+                        break;
+                    // Twitch rate limits at ~100 requests.
+                    // To do: do bans in batches that do not trigger the rate limit.
+                    // Current workaround:  Remove banned bots up to the most recent
+                    //                      banned bot.  Repeat until finished.
+                    case "banbots":
+                        let botList:string[] = config.GetBotList();
+
+                        for (let bot of botList){
+                            client.ban(channel, bot, "This user is a bot: https://twitchinsights.net/bots")
+                            console.log("Bot Name: \"" + bot + "\"");
+                        }
+
+                        TMI_Utils.SendChatMessageToPerson(channel, TMI_Utils.GetDisplayNameFromTag(tags), "Finished banning bots.");
                         break;
                     default:
                         TMI_Utils.SendChatMessageToPerson(channel, TMI_Utils.GetDisplayNameFromTag(tags), "The debug command you tried to use does not exist.");
