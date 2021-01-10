@@ -51,5 +51,34 @@ The OAuth Token **does not** need the ```oauth:``` prefix.
 
 The channels list should be space separated.
 
+# <a name="config"></a>Creating New Commands
+
+1. Navigate to ```./src/commands/```
+2. Create a Typescript file ```command.ts```
+3. Implement the ```ICommand``` interface:
+
+```typescript
+    import tmi = require('tmi.js');
+    export class command implements ICommand {
+        name: string = "command";
+        hasPermission(channel: string, tags: tmi.ChatUserstate): boolean {
+            return true;
+        }
+        run(channel: string, tags: tmi.ChatUserstate, message: string, commandArgs: string[]): void {
+            Utils.PrintTimestamped(tags.username + " used the new command!");
+        }
+    }
+```
+4. Register the command in the command registry: ```./src/commandRegistry.ts```
+
+```
+    import { command } from "./commands/command";
+
+    ...
+    registerCommand(new command());
+```
+
+5. Done!  Your command is now registered.
+
 # License
 **ITS_CHAD_BOT** is licensed under the MIT License.
