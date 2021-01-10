@@ -8,11 +8,16 @@ Twitch chat-bot written in Typescript.
 | !debug printlog        | Print the chat-log.                                                     | Streamer or Mod      |
 | !debug clear           | Clear the chat-log.                                                     | Streamer or Mod      |
 | !debug printconfig     | Print the config.                                                       | Streamer or Mod      |
+| !debug banbots     | Ban bots specified in ```./config/twitch_bots.txt```.                      | Streamer or Mod      |
 | !nuke \<word> \<minutes> | Ban users who used a specified word in the specified number of minutes. | Streamer or Mod      |
 
 # Disclaimer
 
 This bot only stores the last hour of chat-logs.
+
+Known bug: The ```!debug banbots``` command gets rate limited at ~100 requests
+
+Currnet workaround: Ban in batches of 100, until patched.
 
 # How to run
 Requires: [Node JS](https://nodejs.org/en/)
@@ -35,9 +40,11 @@ Requires: [Node JS](https://nodejs.org/en/)
 
 # <a name="config"></a>Config File
 
-```config/blacklisted_phrases.txt``` - Line separated phrases to blacklist.
+```./config/blacklisted_phrases.txt``` - Line separated phrases to blacklist.
 
-```config/whitelisted_symbols.txt``` - No separator needed, symbols to whitelist.
+```./config/whitelisted_symbols.txt``` - No separator needed, symbols to whitelist.
+
+```./config/twitch_bots.txt``` - Line separated usernames to ban.
 
 # <a name=".env"></a>Creating the Environment File
 
