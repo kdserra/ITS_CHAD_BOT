@@ -71,7 +71,7 @@ The channels list should be space separated.
 ```
 4. Register the command in the command registry: ```./src/commandRegistry.ts```
 
-```
+```typescript
     import { command } from "./commands/command";
 
     ...
