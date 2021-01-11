@@ -16,13 +16,16 @@ export class debug implements ICommand {
     }
     run(channel: string, tags: tmi.ChatUserstate, message: string, commandArgs: string[]): void {
         function banBots(i: number) {
-            if (i > config.GetBotList().length) {return;}
+            let botList: string[] = config.GetBotList();
 
-            client.ban(channel, config.GetBotList()[i], "This user is a bot: https://twitchinsights.net/bots").catch(function () {
+            if (i == 0) { TMI_Utils.SendChatMessageToPerson(channel, TMI_Utils.GetDisplayNameFromTag(tags), "Starting to ban bots."); }
+            if (i > botList.length) { TMI_Utils.SendChatMessageToPerson(channel, TMI_Utils.GetDisplayNameFromTag(tags), "Finished banning bots."); return; }
+
+            client.ban(channel, botList[i], "This user is a bot: https://twitchinsights.net/bots").catch(function () {
                 console.log("Promise Rejected");
                 return;
-           });
-            setTimeout(banBots, 1000, i+1);
+            });
+            setTimeout(banBots, 1000, i + 1);
             return
         }
 
@@ -43,9 +46,8 @@ export class debug implements ICommand {
                         Utils.PrintConfig();
                         TMI_Utils.SendChatMessageToPerson(channel, TMI_Utils.GetDisplayNameFromTag(tags), "Config was printed, see output.");
                         break;
-                    case "banbots":
+                    case "assist":
                         banBots(0);
-                        TMI_Utils.SendChatMessageToPerson(channel, TMI_Utils.GetDisplayNameFromTag(tags), "Finished banning bots.");
                         break;
                     default:
                         TMI_Utils.SendChatMessageToPerson(channel, TMI_Utils.GetDisplayNameFromTag(tags), "The debug command you tried to use does not exist.");
