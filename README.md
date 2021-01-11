@@ -3,13 +3,13 @@ Twitch chat-bot written in Typescript.
 
 # Bot Commands
 
-| Command                | Description                                                             | Required Permission |
-|------------------------|-------------------------------------------------------------------------|----------------------|
-| !debug printlog        | Print the chat-log.                                                     | Streamer or Mod      |
-| !debug clear           | Clear the chat-log.                                                     | Streamer or Mod      |
-| !debug printconfig     | Print the config.                                                       | Streamer or Mod      |
-| !debug banbots     | Ban bots specified in ```./config/twitch_bots.txt```.                      | Streamer or Mod      |
-| !nuke \<word> \<minutes> | Ban users who used a specified word in the specified number of minutes. | Streamer or Mod      |
+| Command                  | Description                                                               | Required Permission  |
+|--------------------------|---------------------------------------------------------------------------|----------------------|
+| !debug printlog          | Print the chat-log.                                                       | Streamer or Mod      |
+| !debug clear             | Clear the chat-log.                                                       | Streamer or Mod      |
+| !debug printconfig       | Print the config.                                                         | Streamer or Mod      |
+| !debug banbots           | Ban bots specified in ```./config/twitch_bots.txt```.                     | Streamer or Mod      |
+| !nuke \<word> \<minutes> | Ban users who used a specified word in the specified number of minutes.   | Streamer or Mod      |
 
 # Disclaimer
 
@@ -25,7 +25,7 @@ Requires: [Node JS](https://nodejs.org/en/)
 1. Open a terminal in the bot's path.
 2. Run the following command: ```npm install```
 3. [Create ```.env``` in your bot's path.](#config)
-4. [Configure](#config) the bot.
+4. [Configure](#createcmds) the bot.
 4. Run using the desired Run Command(s):
 
 # Run Commands
@@ -58,7 +58,7 @@ The OAuth Token **does not** need the ```oauth:``` prefix.
 
 The channels list should be space separated.
 
-# <a name="config"></a>Creating New Commands
+# <a name="createcmds"></a>Creating New Commands
 
 1. Navigate to ```./src/commands/```
 2. Create a Typescript file ```command.ts```
