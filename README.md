@@ -68,7 +68,7 @@ The channels list should be space separated.
             return true;
         }
         run(channel: string, tags: tmi.ChatUserstate, message: string, commandArgs: string[]): void {
-            Utils.PrintTimestamped(tags.username + " used the new command!");
+            console.log(tags.username + " used the new command!");
         }
     }
 ```
