@@ -15,6 +15,18 @@ export class debug implements ICommand {
         return TMI_Utils.IsStreamerOrMod(channel, tags);
     }
     run(channel: string, tags: tmi.ChatUserstate, message: string, commandArgs: string[]): void {
+        function banBots(i: number) {
+            if (i > config.GetBotList().length) {return;}
+
+            client.ban(channel, config.GetBotList()[i], "This user is a bot: https://twitchinsights.net/bots").catch(function () {
+                console.log("Promise Rejected");
+                return;
+           });
+            setTimeout(banBots, 1000, i+1);
+            return
+        }
+
+
         const channel_name = channel.slice(1, channel.length);
         if (this.hasPermission(channel_name, tags)) {
             if (commandArgs.length == 3) {
@@ -31,18 +43,8 @@ export class debug implements ICommand {
                         Utils.PrintConfig();
                         TMI_Utils.SendChatMessageToPerson(channel, TMI_Utils.GetDisplayNameFromTag(tags), "Config was printed, see output.");
                         break;
-                    // Twitch rate limits at ~100 requests.
-                    // To do: do bans in batches that do not trigger the rate limit.
-                    // Current workaround:  Remove banned bots up to the most recent
-                    //                      banned bot.  Repeat until finished.
                     case "banbots":
-                        let botList:string[] = config.GetBotList();
-
-                        for (let bot of botList){
-                            client.ban(channel, bot, "This user is a bot: https://twitchinsights.net/bots")
-                            console.log("Bot Name: \"" + bot + "\"");
-                        }
-
+                        banBots(0);
                         TMI_Utils.SendChatMessageToPerson(channel, TMI_Utils.GetDisplayNameFromTag(tags), "Finished banning bots.");
                         break;
                     default:
