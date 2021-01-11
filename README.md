@@ -15,10 +15,6 @@ Twitch chat-bot written in Typescript.
 
 This bot only stores the last hour of chat-logs.
 
-Known bug: The ```!debug banbots``` command gets rate limited at ~100 requests
-
-Currnet workaround: Ban in batches of 100, until patched.
-
 # How to run
 Requires: [Node JS](https://nodejs.org/en/)
 
