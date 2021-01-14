@@ -84,4 +84,4 @@ The channels list should be space separated.
 5. Done!  Your command is now registered.
 
 # License
-**ITS_CHAD_BOT** is licensed under the MIT License, dependencies are under their respective licenses.
+**ITS_CHAD_BOT** is licensed under the MIT License.  Dependencies are under their respective licenses.
