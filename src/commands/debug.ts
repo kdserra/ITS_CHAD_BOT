@@ -55,7 +55,7 @@ export class debug implements ICommand {
                 }
             }
             else {
-                TMI_Utils.SendChatMessageToPerson(channel, TMI_Utils.GetDisplayNameFromTag(tags), "Incorrect usage: !debug <debug cmd>.");
+                TMI_Utils.SendChatMessageToPerson(channel, TMI_Utils.GetDisplayNameFromTag(tags), "Incorrect usage: !debug <debug cmd>");
             }
         }
     }

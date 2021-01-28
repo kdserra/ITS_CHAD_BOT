@@ -4,6 +4,7 @@ import { invalid } from "./commands/invalid";
 import { nuke } from "./commands/nuke";
 import { debug } from "./commands/debug";
 import { vanish } from "./commands/vanish";
+import { spam } from "./commands/spam";
 export { registerCommand, resolveCommand, commandRegistry };
 
 let commandRegistry: ICommand[] = [];
@@ -15,6 +16,7 @@ registerCommand(invalidCmd);
 registerCommand(new nuke());
 registerCommand(new debug());
 registerCommand(new vanish());
+registerCommand(new spam());
 
 function getCommandArgs(message: string): string[] {
     let output: string[] = message.split(/[! ,]+/);
