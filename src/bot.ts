@@ -23,7 +23,7 @@ function onMessageHandler(channel: string, tags: tmi.ChatUserstate, message: str
     }
     
     if (!TMI_Utils.IsStreamerOrMod(channel,tags)) {
-        if (!Utils.isAsciiOnly(Utils.RemoveSpecials(message)) && config.GetConfigOptions().using_symbol_filter)
+        if (config.GetConfigOptions().using_symbol_filter && !Utils.isAsciiOnly(Utils.RemoveSpecials(message)))
         {
             const msg: string = "Please only use ASCII characters!";
             client.timeout(channel, Utils.ConvertToStrongString(tags.username), 5, msg);
@@ -33,7 +33,7 @@ function onMessageHandler(channel: string, tags: tmi.ChatUserstate, message: str
             client.ban(channel, Utils.ConvertToStrongString(tags.username), "Banned for blacklisted spam.");
         }
     }
-    
+
     let logEntry = new LogEntry(channel, tags, message, Utils.GetCurrentTime());
     Log.AddToLog(logEntry);
 }
