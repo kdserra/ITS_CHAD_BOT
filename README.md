@@ -21,7 +21,7 @@ Requires: [Node JS](https://nodejs.org/en/)
 1. Open a terminal in the bot's path.
 2. Run the following command: ```npm install```
 3. [Create ```.env``` in your bot's path.](#config)
-4. [Configure](#createcmds) the bot.
+4. [Configure](#config) the bot.
 4. Run using the desired Run Command(s):
 
 # Run Commands
