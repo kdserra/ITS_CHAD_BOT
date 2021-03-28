@@ -20,7 +20,7 @@ Requires: [Node JS](https://nodejs.org/en/)
 
 1. Open a terminal in the bot's path.
 2. Run the following command: ```npm install```
-3. [Create ```.env``` in your bot's path.](#config)
+3. [Create ```.env``` in your bot's path.](#env)
 4. [Configure](#config) the bot.
 4. Run using the desired Run Command(s):
 
@@ -42,7 +42,7 @@ Requires: [Node JS](https://nodejs.org/en/)
 
 ```./config/twitch_bots.txt``` - Line separated usernames to ban.
 
-# <a name=".env"></a>Creating the Environment File
+# <a name="env"></a>Creating the Environment File
 
 Navigate to the root folder of the project, and create a file called `.env`
 
