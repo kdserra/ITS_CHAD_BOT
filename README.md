@@ -44,15 +44,20 @@ Requires: [Node JS](https://nodejs.org/en/)
 
 # <a name=".env"></a>Creating the Environment File
 
+Navigate to the root folder of the project, and create a file called `.env`
+
+Inside this file, insert the following:
 ```
 bot_username = "my_bot_username"
 bot_oauth_token = "oauth_token_no_prefix"
 channels = "channel1 channel2 channel3"
 ```
+Next, replace and populate the placeholder values.
 
-The OAuth Token **does not** need the ```oauth:``` prefix.
+Note: 
 
-The channels list should be space separated.
+ - The OAuth Token **does not** need the ```oauth:``` prefix.
+ - The channels list should be space separated.
 
 # <a name="createcmds"></a>Creating New Commands
 
