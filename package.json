@@ -1,7 +1,7 @@
 {
   "name": "its-chad-bot",
   "version": "1.0.0",
-  "description": "Twitch chat-bot made for the streamer ItsAmbitious.",
+  "description": "Twitch chat-bot.",
   "main": "index.js",
   "dependencies": {
     "@types/express": "^4.17.9",
